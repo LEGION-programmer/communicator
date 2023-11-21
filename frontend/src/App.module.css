@@ -1,0 +1,82 @@
+*{
+    font-family: sans-serif;
+}
+
+.conteiner{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.mainBg{
+    padding: 0;
+    margin: 0;
+    background-color: #41D3BD;
+}
+
+.secendBg{
+    display: grid;
+    background-color: #FFFFF2;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #407899;
+    padding: 5px;
+    margin-bottom: 40px;
+    width: 90%;
+    justify-content: center;
+    justify-items: center;
+}
+
+.fontHeader{
+    color: #791E94;
+    text-align: center;
+    font-size: 35px;
+}
+
+.linkToOtherPage{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #791E94;
+    font-size: 20px;
+}
+
+.userInfo{
+    display: grid;
+    justify-content: center;
+    margin: 15px 0;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #407899;
+    padding: 5px;
+    width: 90%;
+}
+
+.userName{
+    font-size: 18px;
+    color: #791E94;
+}
+
+.userPhotoDiv{
+    display: grid;
+    justify-content: center;
+}
+
+.userPhoto{
+    width: 100%;
+    height: 60px;
+}
+
+.pulpit{
+    background-color: #FFFFF2;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #407899;
+    padding: 5px;
+    margin-bottom: 40px;
+    width: 90%;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow: hidden;
+}

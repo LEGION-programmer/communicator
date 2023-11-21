@@ -1,0 +1,26 @@
+.listElement{
+    position: relative;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    left: -50px;
+    align-content: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #407899;
+}
+
+.userPhoto{
+    width: 75px;
+    height: 75px;
+}
+
+.name{
+    position: relative;
+    top: 15px;
+    margin: 15px;
+    font-size: 18px;
+    color: #791E94;
+}

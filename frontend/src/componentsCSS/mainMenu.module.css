@@ -1,0 +1,80 @@
+.con{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.photo{
+    position: fixed;
+    bottom: 0;
+    width: 90px;
+    height: 90px;
+}
+
+.activeStatusOnline{
+    position: fixed;
+    bottom: 5px;
+    left: 70px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    border-radius: 100%;
+    background-color: #00ff00;
+    border: 2px solid #ffffff;
+}
+
+.activeStatusBeRightBack{
+    position: fixed;
+    bottom: 5px;
+    left: 70px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    border-radius: 100%;
+    background-color: #ffff00;
+    border: 2px solid #ffffff;
+}
+
+.activeStatusDoNotDisturb{
+    position: fixed;
+    bottom: 5px;
+    left: 70px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    border-radius: 100%;
+    background-color: #ff0000;
+    border: 2px solid #ffffff;
+}
+
+.options{
+    position: fixed;
+    bottom: 100px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-color: #FFFFF2;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #407899;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.list{
+    position: relative;
+    list-style: none;
+    justify-items: center;
+    color: #791E94;
+    left: -30px;
+}
+
+.listElement{
+    margin: 5px;
+    padding: 5px;
+    border-bottom: 2px solid #407899;
+}
+
+.optionPhoto{
+    width: 90px;
+    height: 90px;
+}

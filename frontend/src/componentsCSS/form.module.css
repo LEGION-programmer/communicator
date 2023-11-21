@@ -1,0 +1,67 @@
+.list{
+    position: relative;
+    list-style: none;
+}
+
+.listElement{
+    position: relative;
+    margin: 10px;
+}
+
+.formElement{
+    display: grid;
+    justify-items: center;
+}
+
+.labelElement{
+    position: relative;
+    font-size: 18px;
+    color: #791E94;
+    pointer-events: none;
+    top: -35px;
+    left: 10px;
+}
+
+.inputElement{
+    text-align: right;
+    font-size: 15px;
+    width: 90%;
+    height: 30px;
+    border: 0;
+    border-bottom: 2px solid #407899;
+    border-radius: 20px;
+    color: #791E94;
+    transition: 0.3s all ease;
+}
+
+.inputElement:focus{
+    border: 0;
+    border-bottom: 2px solid #DE6449;
+    outline: none;
+    transform: translateY(30px);
+}
+
+.labelSelectElement{
+    position: relative;
+    font-size: 18px;
+    color: #791E94;
+    pointer-events: none;
+}
+
+.selectElement{
+    font-size: 15px;
+    color: #791E94;
+    border: 0;
+    border-bottom: 2px solid #407899;
+    outline: none;
+}
+
+.buttonElement{
+    color: #791E94;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #407899;
+    cursor: pointer;
+    margin: 10px;
+}
+
