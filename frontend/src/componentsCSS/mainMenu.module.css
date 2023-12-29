@@ -48,6 +48,7 @@
 }
 
 .options{
+    padding-top: 10px;
     position: fixed;
     bottom: 100px;
     display: grid;
@@ -57,7 +58,7 @@
     border-radius: 20px;
     box-shadow: 0 0 20px #407899;
     max-height: 250px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .list{
@@ -74,7 +75,34 @@
     border-bottom: 2px solid #407899;
 }
 
+.topBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+.leftBlock{
+    width: 50%;
+    height: 100px;
+}
+
+.rightBlock{
+    width: 50%;
+    height: 100px;
+    float: right;
+    text-align: left;
+}
+
+
 .optionPhoto{
     width: 90px;
     height: 90px;
+}
+
+.inputFile{
+    color: #791E94;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 2px solid #407899;
+    cursor: pointer;
+    margin: 0;
 }

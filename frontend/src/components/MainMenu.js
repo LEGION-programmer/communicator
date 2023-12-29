@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import mainMenuCss from "../componentsCSS/mainMenu.module.css"
+import ProfilePhoto from "./MenuComponents/ProfilePhoto"
+import UserStatus from "./MenuComponents/UserStatus"
 
 const MainMenu = ({userInfo}) => {
-    const [userStatus, setUserStatus] = useState('online')
+    const [userStatus, setUserStatus] = useState(window.localStorage.getItem('userStatus'))
     const [showOptions, setShowOptions] = useState(false)
     const [showChangeStatus, setShowChangeStatus] = useState(false)
 
@@ -14,48 +16,37 @@ const MainMenu = ({userInfo}) => {
         setShowChangeStatus(!showChangeStatus)
     }
 
-    const changeuserStatus = status => {
-        setUserStatus(status)
-    }
-
-    useEffect(()=>{
-        
-        console.log(userStatus)
-    }, [userStatus])
-
     return (
         <div className={mainMenuCss.con}>
             {showOptions ? (
                 <div>
                 <div className={mainMenuCss.options}>
                     <ul className={mainMenuCss.list}>
-                        <li className={mainMenuCss.listElement}>{userInfo.userPhoto ? 
-                            <img src={userInfo.userPhoto} alt="usePphoto" className={mainMenuCss.optionPhoto}></img>
-                            :<img src={require('../assets/profilePhoto.png')} alt="userPhoto" className={mainMenuCss.optionPhoto}></img>}
-                        </li>
                         <li className={mainMenuCss.listElement}>
-                            {userInfo.name} {userInfo.surname}
-                        </li>
-                        <li className={mainMenuCss.listElement}>
-                            Your id: {userInfo.userId}
+                            <div className={mainMenuCss.topBlock}>
+                                <div className={mainMenuCss.leftBlock}>{userInfo.userPhoto ? 
+                                    <img src={userInfo.userPhoto} alt="usePphoto" className={mainMenuCss.optionPhoto}></img>
+                                    :<img src={require('../assets/profilePhoto.png')} alt="userPhoto" className={mainMenuCss.optionPhoto}></img>}
+                                </div>
+                                <div className={mainMenuCss.rightBlock}>
+                                    <p>{userInfo.name} {userInfo.surname}</p>
+                                    <p>Your id: {userInfo.userId}</p>
+                                </div>
+                            </div> 
                         </li>
                         <li className={mainMenuCss.listElement}>
                             Change profile Photo
                             <div>
-
+                                <ProfilePhoto />
                             </div>
                         </li>
                         <li className={mainMenuCss.listElement} onClick={switchChangeStatus}>
                             Change status
                             {showChangeStatus ? (
-                            <div>
-                                <ul className={mainMenuCss.list}>
-                                    <li><span onClick={setUserStatus('online')}>Online</span></li>
-                                    <li><span onClick={setUserStatus('BeRightBack')}>Be Right Back</span></li>
-                                    <li><span onClick={setUserStatus('DoNotDisturb')}>Do Not Disturb</span></li>
-                                </ul>
-                            </div>
-                            ): null}
+                                <div>
+                                    <UserStatus />
+                                </div>
+                            ): null} 
                         </li>
                     </ul>
                 </div>

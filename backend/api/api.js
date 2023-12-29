@@ -8,5 +8,6 @@ router.get('/userList/:userId',  UserController.findListOfUsersById)
 router.post('/userAddFrend', UserController.addNewFriend)
 router.get('/friendsId/:userId', UserController.getFriendsId)
 router.get('/userInfo/:userId', UserController.getUserInfo)
+router.put('/userPhoto/:userId', UserController.editUserPhoto)
 
 module.exports = router
