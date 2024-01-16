@@ -72,7 +72,7 @@ class UserController {
             user.friends.push(friendId)
             await user.save()
         
-            return res.status(200).json({ message: 'New fiend added' })
+            return res.status(200).json({ message: 'New friend added' })
         } catch (error) {
             return res.status(500).json(error)
         }
@@ -91,10 +91,6 @@ class UserController {
             const friendsIdArray = user.friends
     
             const friends = await User.find({ userId: { $in: friendsIdArray } })
-    
-            if (!friends || friends.length === 0) {
-                return res.status(404).json({ message: 'No friends found' })
-            }
     
             return res.status(200).json({ friends })
         } catch (error) {
@@ -124,6 +120,18 @@ class UserController {
             user.userPhoto = req.body.userPhoto
             await user.save()
             return res.status(200).json({message: 'Photo was changed'})
+        }catch(e){
+            return res.status(500).json({ message: 'Internal server error' }) 
+        }
+    }
+
+    async findUser(req, res){
+        try{
+            const user = await User.findOne({userId: req.params.userId})
+            if(!user){
+                return res.status(404).json({message: 'User not found'})
+            }
+            return res.status(200).json(user)
         }catch(e){
             return res.status(500).json({ message: 'Internal server error' }) 
         }

@@ -6,11 +6,12 @@ import style from '../App.module.css'
 import buttonSyle from '../componentsCSS/button.module.css'
 import axios from "axios"
 
-const PulpitPage = () => {
+const PulpitPage = ({socket}) => {
     const userIdFromSession = Number(window.sessionStorage.getItem('userId'))
     const [showAddFriend, setShowAddFriend] = useState(false)
     const [userList, setUserList] = useState(null)
     const [userInfo, setUserInfo] = useState(null)
+
     const switchShowAddFirends = () => {
         setShowAddFriend(!showAddFriend)
     }
@@ -40,7 +41,7 @@ const PulpitPage = () => {
             }
             {userList ? (
                 <div className={style.pulpit}>
-                    <UserList userList={userList}/>
+                    <UserList userList={userList} socket={socket}/>
                 </div>
             ): null}
             {userInfo ? 

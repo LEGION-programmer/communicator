@@ -9,5 +9,6 @@ router.post('/userAddFrend', UserController.addNewFriend)
 router.get('/friendsId/:userId', UserController.getFriendsId)
 router.get('/userInfo/:userId', UserController.getUserInfo)
 router.put('/userPhoto/:userId', UserController.editUserPhoto)
+router.get('/findUser/:userId', UserController.findUser)
 
 module.exports = router

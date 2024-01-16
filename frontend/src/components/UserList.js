@@ -1,19 +1,44 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom'
 import userListCss from '../componentsCSS/userList.module.css'
 
 const UserList = ({userList}) => {
+    const navigate = useNavigate()
+    const [friendId, setFriendId] = useState(null)
+    
+    const getFirendId = (id) => {
+        setFriendId(id)
+    }
+
+    useEffect(()=>{
+        if(friendId !== null){
+            window.localStorage.setItem('friendId', friendId)
+            const data = parseInt(window.sessionStorage.getItem('userId')) + parseInt(friendId)
+            window.localStorage.setItem('roomId', data)
+            navigate('/chat')
+        }
+    }, [friendId])
     return (
         <div>
-            <ul>
-                {userList.friends.map(friend => (
-                <li key={friend._id} className={userListCss.listElement}>
-                    <img src={require('../assets/profilePhoto.png')}
-                     alt="userPhoto"
-                     className={userListCss.userPhoto}></img>
-                    <h1 className={userListCss.name}>{friend.name} {friend.surname}</h1>
-                </li>
-                ))}
-            </ul>   
+            <div>
+                <ul>
+                    {userList.friends.map(friend => (
+                    <li key={friend._id} 
+                    className={userListCss.listElement}
+                    onClick={()=>getFirendId(friend.userId)}>
+                        {friend.userPhoto ? (
+                            <div>
+                                <img src={friend.userPhoto} alt="usePphoto" className={userListCss.userPhoto}></img>
+                            </div>
+                        ):  <img src={require('../assets/profilePhoto.png')}
+                            alt="userPhoto"
+                            className={userListCss.userPhoto}></img>
+                        }
+                        <h1 className={userListCss.name}>{friend.name} {friend.surname}</h1>
+                    </li>
+                    ))}
+                </ul>   
+            </div>
         </div>
     )
 }

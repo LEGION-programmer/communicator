@@ -15,6 +15,7 @@ const LoginPage = () => {
         onSubmit: async values => {
             const res = await axios.post('http://localhost:3001/login', values)
             window.sessionStorage.setItem('userId', parseInt(res.data.data))
+            window.localStorage.clear()
             navigate('/pulpit')
         }
     })

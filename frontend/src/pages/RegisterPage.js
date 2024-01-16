@@ -14,11 +14,12 @@ const RegisterPage = () => {
             surname: '',
             password: '',
             cPassword: '',
-            sex: ''
+            sex: 'man'
         },
         onSubmit: async values => {
             const res = await axios.post('http://localhost:3001/register', values)
             window.sessionStorage.setItem('userId', parseInt(res.data.data))
+            window.localStorage.clear()
             navigate('/pulpit')
         }
     })

@@ -1,16 +1,11 @@
-import React, { useState }from "react"
+import React from "react"
 import style from '../App.module.css'
 import buttonSyle from '../componentsCSS/button.module.css'
 import axios from "axios"
 
 const FindUserList = ({userdata}) => {
-    const [userId, setUserId] = useState(null)
-    const [friendId, setFriendId] = useState(null)
     const addFriend = async() => {
-        const id = parseInt(window.sessionStorage.getItem('userId'))
-        setUserId(id)
-        setFriendId(userdata.userId)
-        const data = {userId, friendId}
+        const data = {userId: window.sessionStorage.getItem('userId'), friendId: userdata.userId}
         await axios.post(`http://localhost:3001/userAddFrend`, data)
     }
     return (
