@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import mainMenuCss from "../componentsCSS/mainMenu.module.css"
 import ProfilePhoto from "./MenuComponents/ProfilePhoto"
 import UserStatus from "./MenuComponents/UserStatus"
+import { useNavigate } from 'react-router-dom'
 
 const MainMenu = ({userInfo}) => {
     const [userStatus, setUserStatus] = useState(window.localStorage.getItem('userStatus'))
     const [showOptions, setShowOptions] = useState(false)
     const [showChangeStatus, setShowChangeStatus] = useState(false)
+    const navigate = useNavigate()
 
     const changeShowOptionsStatus = () => {
         setShowOptions(!showOptions)
@@ -14,6 +16,12 @@ const MainMenu = ({userInfo}) => {
 
     const switchChangeStatus = () => {
         setShowChangeStatus(!showChangeStatus)
+    }
+
+    const logout = () => {
+        window.localStorage.clear()
+        window.sessionStorage.clear()
+        navigate('/')
     }
 
     return (
@@ -47,6 +55,9 @@ const MainMenu = ({userInfo}) => {
                                     <UserStatus />
                                 </div>
                             ): null} 
+                        </li>
+                        <li className={mainMenuCss.listElement}>
+                            <span className={mainMenuCss.logout} onClick={logout}>Logout</span>
                         </li>
                     </ul>
                 </div>

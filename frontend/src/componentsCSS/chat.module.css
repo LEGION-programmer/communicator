@@ -34,9 +34,46 @@
     box-shadow: 0 0 20px #407899;
     padding: 5px;
     width: 100%;
-    margin-top: 25px;
-    min-height: 650px;
+    margin: 25px 0;
+    max-height: 600px;
+    min-height: 600px;
     overflow-y: auto;
+}
+
+.receiveMessage{
+    display: flex;
+    justify-content: flex-start;
+    color: #791E94;
+    background-color: #FFFFF2;
+    box-shadow: 0 0 20px #407899;
+    border-radius: 20px;
+    margin: 20px 5px;
+    padding: 10px;
+}
+
+.sendMessage{
+    display: flex;
+    justify-content: flex-end;
+    color: #791E94;
+    background-color: #e6e6e6;
+    box-shadow: 0 0 20px #407899;
+    border-radius: 20px;
+    margin: 20px 5px;
+    padding: 10px;
+}
+
+.timeFromReceiveMessage{
+    position: relative;
+    bottom: -20px;
+    left: -20px;
+    font-size: 12px;
+}
+
+.timeFromSendMessage{
+    position: relative;
+    bottom: -20px;
+    right: 0px;
+    font-size: 12px;
 }
 
 .footer{

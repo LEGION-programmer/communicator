@@ -5,8 +5,10 @@ import MainMenu from "../components/MainMenu"
 import style from '../App.module.css'
 import buttonSyle from '../componentsCSS/button.module.css'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const PulpitPage = ({socket}) => {
+    const navigate = useNavigate()
     const userIdFromSession = Number(window.sessionStorage.getItem('userId'))
     const [showAddFriend, setShowAddFriend] = useState(false)
     const [userList, setUserList] = useState(null)
@@ -15,6 +17,13 @@ const PulpitPage = ({socket}) => {
     const switchShowAddFirends = () => {
         setShowAddFriend(!showAddFriend)
     }
+
+    useEffect(() => {
+        if(!window.sessionStorage.getItem('userId')){
+            navigate('/')
+        }
+        window.localStorage.setItem('userStatus', 'online')
+    })
 
     useEffect(() => {
         const getData = async() => {

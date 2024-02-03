@@ -9,8 +9,13 @@ const MainPage = () => {
             <div className={style.secendBg}>
                 <h1 className={style.fontHeader}>Welcome in Better Message!</h1>
             </div>
-            <div>
-                {/* image */}
+            <div className={style.photoConteiner}>
+                <img src={require("../assets/baner1.jpg")}
+                    className={style.photo} alt="photo"></img>
+                <img src={require("../assets/baner2.jpg")}
+                    className={style.photo} alt="photo"></img>
+                <img src={require("../assets/baner3.jpg")}
+                    className={style.photo} alt="photo"></img>
             </div>
             <div className={style.secendBg}>
                 <h3 className={style.linkToOtherPage}>To join us you have to:</h3>

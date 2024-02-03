@@ -36,7 +36,7 @@ io.on('connection', (socket)=>{
         socket.to(data.room).emit('receive_message', data)
     })
 
-    socket.on('disconnect', ()=>{
+    socket.on('leaveRoom', ()=>{
         const room = Object.keys(socket.rooms)[1];
         io.to(room).emit('userLeft', socket.id);
     })

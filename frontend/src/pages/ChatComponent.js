@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react"
-import axios from "axios"
+import axios, { all } from "axios"
+import MessageComponent from "../components/MessageComponent"
 import chatCss from '../componentsCSS/chat.module.css'
 import io from 'socket.io-client'
+import { useNavigate } from 'react-router-dom'
 
 const socket = io('http://localhost:3001')
 
 const ChatComponent = () => {
+    const navigate = useNavigate()
     const [friendData, setFriendData] = useState(null)
     const [message, setMessage] = useState("")
     const [room, setRoom] = useState(window.localStorage.getItem('roomId'))
@@ -13,10 +16,19 @@ const ChatComponent = () => {
 
     socket.emit('join_room', room)
 
+    useEffect(() => {
+        if(!window.sessionStorage.getItem('userId')){
+            navigate('/')
+        }
+    })
+
     useEffect(()=>{
         socket.on('receive_message', (data)=>{
             setAllMessage(oldData => {
                 const newData = [...oldData, data]
+                if(newData[newData.length-1] === newData[newData.length-2]){
+                    newData.pop()
+                }
                 return newData
             })
         })
@@ -25,7 +37,7 @@ const ChatComponent = () => {
     const sendMessage = () => {
         const messageData = {
             room,
-            author: friendData.name,
+            author: window.localStorage.getItem('friendId'),
             time: new Date(Date.now()).getHours()+
             ':'
             +new Date(Date.now()).getMinutes(),
@@ -39,6 +51,12 @@ const ChatComponent = () => {
         })
     }
 
+    const leaveChat = () => {
+        window.localStorage.clear()
+        socket.emit('leaveRoom')
+        navigate('/pulpit')
+    } 
+    
     useEffect(()=>{
         const getFirendData = async() => {
             const res = await axios.get(`http://localhost:3001/findUser/${window.localStorage.getItem('friendId')}`)
@@ -55,7 +73,7 @@ const ChatComponent = () => {
             <div>
                 {friendData ? (
                     <div className={chatCss.header}>
-                        <span className={chatCss.return}>&#x21d0;</span>
+                        <span className={chatCss.return} onClick={leaveChat}>&#x21d0;</span>
                         <div>
                             {friendData.userPhoto ? 
                             <img src={friendData.userPhoto} alt="usePphoto" className={chatCss.headerPhoto}></img>
@@ -68,19 +86,7 @@ const ChatComponent = () => {
                 ): null}
             </div>
             <div className={chatCss.body}>
-                {allMessage.map((message, index) => (
-                <div key={index}>
-                    <div>
-                        <span className={chatCss.messageOwner}>{message.owner}</span>
-                    </div>
-                    <div className={chatCss.message}>
-                        {message.message}
-                    </div>
-                    <div>
-                        <span className={chatCss.time}>{message.time}</span>
-                    </div>
-                </div>
-                ))}
+                <MessageComponent allMessage={allMessage}/>
             </div>
             <div className={chatCss.footer}>
                 <input type="text" placeholder="message..." 

@@ -13,8 +13,8 @@ const UserStatus = () => {
         <div>
             <ul className={mainMenuCss.list}>
                     <li><span onClick={()=>changeStatus('online')}>Online</span></li>
-                    <li><span onClick={()=>changeStatus('BeRightBack')}>Online</span></li>
-                    <li><span onClick={()=>changeStatus('DoNotDisturb')}>Online</span></li>
+                    <li><span onClick={()=>changeStatus('BeRightBack')}>Be Right Back</span></li>
+                    <li><span onClick={()=>changeStatus('DoNotDisturb')}>Do Not Disturb</span></li>
             </ul>
         </div>
     )

@@ -5,14 +5,17 @@ import userListCss from '../componentsCSS/userList.module.css'
 const UserList = ({userList}) => {
     const navigate = useNavigate()
     const [friendId, setFriendId] = useState(null)
+    const [friendName, setFriendName] = useState(null)
     
-    const getFirendId = (id) => {
+    const getFirend = (id, name) => {
         setFriendId(id)
+        setFriendName(name)
     }
 
     useEffect(()=>{
         if(friendId !== null){
             window.localStorage.setItem('friendId', friendId)
+            window.localStorage.setItem('friendName', friendName)
             const data = parseInt(window.sessionStorage.getItem('userId')) + parseInt(friendId)
             window.localStorage.setItem('roomId', data)
             navigate('/chat')
@@ -25,7 +28,7 @@ const UserList = ({userList}) => {
                     {userList.friends.map(friend => (
                     <li key={friend._id} 
                     className={userListCss.listElement}
-                    onClick={()=>getFirendId(friend.userId)}>
+                    onClick={()=>getFirend(friend.userId, friend.name)}>
                         {friend.userPhoto ? (
                             <div>
                                 <img src={friend.userPhoto} alt="usePphoto" className={userListCss.userPhoto}></img>
