@@ -26,9 +26,6 @@ const userSchema = new mongoose.Schema({
   friends: [{
       type: Number,
       ref: 'User'
-  }],
-  groups: [{
-      groupId: Number
   }]
 })
 

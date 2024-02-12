@@ -7,6 +7,7 @@ const FindUserList = ({userdata}) => {
     const addFriend = async() => {
         const data = {userId: window.sessionStorage.getItem('userId'), friendId: userdata.userId}
         await axios.post(`http://localhost:3001/userAddFrend`, data)
+        window.location.reload()
     }
     return (
         <div className={style.userInfo}>

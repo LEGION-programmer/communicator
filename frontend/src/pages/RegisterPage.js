@@ -26,7 +26,7 @@ const RegisterPage = () => {
     
     return (
         <div className={style.conteiner}>
-            <div className={formStyle.secendBg}>
+            <div className={style.secendBg}>
                 <h1 className={style.fontHeader}>Register</h1>
                 <form onSubmit={formik.handleSubmit} className={formStyle.formElement}>
                     <ul className={formStyle.list}>
