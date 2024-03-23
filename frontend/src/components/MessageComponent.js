@@ -29,22 +29,6 @@ const MessageComponent = ({allMessage}) => {
                 
                 
             ))}
-            {/*
-                        {myMessage.map((message, index) => (
-                <div key={index} className={chatCss.sendMessage}>
-                    <div>
-                        <span className={chatCss.messageOwner}>{message.owner}</span>
-                    </div>
-                    <div className={chatCss.message}>
-                        {message.message}
-                    </div>
-                    <div className={chatCss.timeFromSendMessage}>
-                        <p>{message.time}</p>
-                    </div>
-                </div>
-            ))}
-            */}
-
         </div>
     )
 }
